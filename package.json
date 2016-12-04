@@ -1,5 +1,5 @@
 {
-  "name": "qw",
+  "name": "qwo",
   "version": "1.0.0",
   "description": "A command line tool to quickly open websites",
   "main": "index.js",
@@ -7,18 +7,18 @@
     "test": "mocha"
   },
   "bin": {
-    "qw": "./index.js"
+    "qwo": "./index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vsgoulart/qw.git"
+    "url": "git+https://github.com/vsgoulart/qwo.git"
   },
   "author": "Vinícius Goulart (https://github.com/vsgoulart)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vsgoulart/qw/issues"
+    "url": "https://github.com/vsgoulart/qwo/issues"
   },
-  "homepage": "https://github.com/vsgoulart/qw#readme",
+  "homepage": "https://github.com/vsgoulart/qwo#readme",
   "dependencies": {
     "commander": "^2.9.0",
     "lodash": "^4.17.2",
