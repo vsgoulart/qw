@@ -1,0 +1,23 @@
+{
+  "name": "qw",
+  "version": "1.0.0",
+  "description": "A command line tool to quickly open websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsgoulart/qw.git"
+  },
+  "author": "Vinícius Goulart (https://github.com/vsgoulart)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vsgoulart/qw/issues"
+  },
+  "homepage": "https://github.com/vsgoulart/qw#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "node-cmd": "^1.1.1"
+  }
+}
