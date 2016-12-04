@@ -21,6 +21,11 @@
   "homepage": "https://github.com/vsgoulart/qw#readme",
   "dependencies": {
     "commander": "^2.9.0",
+    "lodash": "^4.17.2",
     "node-cmd": "^1.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
   }
 }
