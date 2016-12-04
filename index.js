@@ -4,11 +4,12 @@
 
 const program = require("commander");
 const utils = require("./utils");
+const version = require("./package.json").version;
 
 var cmdValue;
 var envValue;
 
-program.version("1.0.0");
+program.version(version);
 program.arguments("<cmd> [env]");
 program.action(function(cmd, env) {
     cmdValue = cmd;
