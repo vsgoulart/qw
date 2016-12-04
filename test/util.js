@@ -64,7 +64,13 @@ describe("util.js", function() {
         });
     });
 
-    describe("when pasrseCommand() is called", function() {
+    describe("when isCustomCommand() is called", function() {
+        it("should return a boolean", function(done) {
+            var result = utils.isCustomCommand("test");
 
+            expect(result).to.be.a("boolean");
+
+            done();
+        });
     });
 });

@@ -8,7 +8,10 @@ const _ = require("lodash");
 const utils = {};
 
 utils["execute"] = function(command, environment = "") {
-    cmd.run("start " + this.checkPrefix(command));
+    if(this.isCustomCommand(command))
+        this.openURL(this.getCustomURL(command));
+    else
+        this.openURL(command);
 };
 
 utils["checkPrefix"] = function(url) {
@@ -20,6 +23,18 @@ utils["checkPrefix"] = function(url) {
 
 utils["isValidURL"] = function(url) {
     return _.startsWith(url, "http://") || _.startsWith(url, "https://");
-}
+};
+
+utils["isCustomCommand"] = function(command) {
+    return false;
+};
+
+utils["openURL"] = function(url) {
+    cmd.run("start " + this.checkPrefix(url));
+};
+
+utils["getCustomURL"] = function(command) {
+    return "";
+};
 
 module.exports = utils;
