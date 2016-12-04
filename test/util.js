@@ -35,6 +35,35 @@ describe("util.js", function() {
         });
     });
 
+    describe("when isValidURL() is called", function() {
+        it("should return true when string passed starts with 'http://'", function(done) {
+            var result = utils.isValidURL("http://test.com");
+
+            expect(result).to.be.a("boolean");
+            expect(result).to.be.equal(true);
+
+            done();
+        });
+
+        it("should return true when string passed starts with 'https://'", function(done) {
+            var result = utils.isValidURL("https://test.com");
+
+            expect(result).to.be.a("boolean");
+            expect(result).to.be.equal(true);
+
+            done();
+        });
+
+        it("should return false when string passed don't start with 'http://' or 'https://'", function(done) {
+            var result = utils.isValidURL("test.com");
+
+            expect(result).to.be.a("boolean");
+            expect(result).to.be.equal(false);
+
+            done();
+        });
+    });
+
     describe("when pasrseCommand() is called", function() {
 
     });
