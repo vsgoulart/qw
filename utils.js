@@ -14,7 +14,7 @@ utils["execute"] = function(command, environment = "") {
         this.openURL(command);
 };
 
-utils["checkPrefix"] = function(url) {
+utils["fixPrefix"] = function(url) {
     if(this.isValidURL(url))
         return url;
     else

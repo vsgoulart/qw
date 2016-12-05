@@ -6,9 +6,9 @@ const utils = require("../utils");
 const expect = require("chai").expect;
 
 describe("util.js", function() {
-    describe("when checkPrefix() is called", function() {
+    describe("when fixPrefix() is called", function() {
         it("should return a string that starts with 'http://' if it didn't before", function(done) {
-            var url = utils.checkPrefix("test.com");
+            var url = utils.fixPrefix("test.com");
 
             expect(url).to.be.a("string");
             expect(url).to.be.equal("http://test.com");
@@ -17,7 +17,7 @@ describe("util.js", function() {
         });
 
         it("should return the same string if the string passed starts with 'http://'", function(done) {
-            var url = utils.checkPrefix("http://test.com");
+            var url = utils.fixPrefix("http://test.com");
 
             expect(url).to.be.a("string");
             expect(url).to.be.equal("http://test.com");
@@ -26,7 +26,7 @@ describe("util.js", function() {
         });
 
         it("should return the same string if the string passed starts with'https://'", function(done) {
-            var url = utils.checkPrefix("https://test.com");
+            var url = utils.fixPrefix("https://test.com");
 
             expect(url).to.be.a("string");
             expect(url).to.be.equal("https://test.com");
