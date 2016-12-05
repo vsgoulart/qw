@@ -2,10 +2,13 @@
 
 "use strict"
 
+const fs = require("fs");
 const cmd = require("node-cmd");
 const _ = require("lodash");
 
 const utils = {};
+
+utils["customCommandsFilename"] = "customCommands.json";
 
 utils["execute"] = function(command, environment = "") {
     if(this.isCustomCommand(command))
@@ -25,15 +28,50 @@ utils["isValidURL"] = function(url) {
     return _.startsWith(url, "http://") || _.startsWith(url, "https://");
 };
 
-utils["isCustomCommand"] = function(command) {
-    return false;
+utils["openURL"] = function(url) {
+    cmd.run("start " + this.fixPrefix(url));
 };
 
-utils["openURL"] = function(url) {
-    cmd.run("start " + this.checkPrefix(url));
+utils["isCustomCommand"] = function(command) {
+    if(this.getCustomCommands().indexOf(command) !== -1)
+        return true;
+    else
+        return false;
 };
 
 utils["getCustomURL"] = function(command) {
+    const customCommands = JSON.parse(this.getDataFromCustomCommandsFile());
+
+    function isInCommands(o) {
+        return o.commands.includes(command);
+    }
+
+    const commandIndex = _.findIndex(customCommands, isInCommands);
+
+    if(commandIndex != -1)
+        return customCommands[commandIndex].url;
+    else
+        return "";
+};
+
+utils["getCustomCommands"] = function() {
+    if(fs.existsSync(this.customCommandsFilename)) {
+        const customCommands = JSON.parse(this.getDataFromCustomCommandsFile());
+
+        if(Array.isArray(customCommands))
+            return customCommands.reduce(function(accumulator, currentValue) {
+                return accumulator.concat(_.words(currentValue.commands));
+            }, []);
+    }
+    
+    return [];
+};
+
+utils["getDataFromCustomCommandsFile"] = function() {
+    if(fs.existsSync(this.customCommandsFilename)) {
+        return fs.readFileSync(this.customCommandsFilename, "utf-8");
+    }
+
     return "";
 };
 
